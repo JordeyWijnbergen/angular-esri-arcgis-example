@@ -1,0 +1,6 @@
+<ul [ngClass]="{'nav': true,'nav-tabs': horizontal, 'nav-pills nav-stacked': !horizontal}">
+    <li *ngFor="let tab of tabs" (click)="selectTab(tab)" [ngClass]="{'active': tab.active}">
+        <a id="{{tab.ref}}" href="{{tab.ref}}">{{tab.tabTitle}}</a>
+    </li>
+</ul>
+<ng-content></ng-content>

@@ -1,0 +1,7 @@
+<div class="map">
+    <esri-map [webMapProperties]="webMapProperties" [mapViewProperties]="mapViewProperties" (mapInit)="onMapInit($event)"></esri-map>
+</div>
+
+<esri-layersToggle position="top-right"></esri-layersToggle>
+
+<div style="color:red" esri-customWidget position="bottom-left" width="100">test info: {{testInfo}}</div>
