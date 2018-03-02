@@ -1,10 +1,13 @@
 # AngularArcGISExample
 This is a demo project for the library
 https://github.com/JordeyWijnbergen/angularx-esri-components
+
 use npm install --save angularx-esri-components
+
 or 
 
 https://github.com/TheKeithStewart/angular-esri-components
+
 use npm install --save angular-esri-components
 
 For the latter:
