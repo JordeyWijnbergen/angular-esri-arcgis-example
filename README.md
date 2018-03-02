@@ -14,9 +14,6 @@ For the latter:
   * replace angularx with angular in the demo project.
   * The angular-esri-components might be a littlle behind because of a pending pull request. 
 
-npm install --save angularx-esri-components
-
-
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.1.
