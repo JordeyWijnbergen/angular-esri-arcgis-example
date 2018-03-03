@@ -4,7 +4,6 @@ import { promise } from 'selenium-webdriver';
 import { EsriMapService } from 'angularx-esri-components/src/lib/core';
 import { EsriModuleProvider } from 'angularx-esri-components/src/lib/core';
 
-
 @Component({
   selector: 'app-esri-map',
   templateUrl: './esri-map.component.html',
@@ -13,15 +12,17 @@ import { EsriModuleProvider } from 'angularx-esri-components/src/lib/core';
 
 export class EsriMapComponent implements OnInit {
   webMapProperties: __esri.WebMapProperties = {
-  //  basemap: 'dark-gray'
-  portalItem: {
-    id: 'ad5759bf407c4554b748356ebe1886e5'
-  }
+    //  basemap: 'dark-gray'
+    portalItem: {
+      id: 'ad5759bf407c4554b748356ebe1886e5'
+    }
 
   };
+
   mapViewProperties: __esri.MapViewProperties = {
     zoom: 4,
   };
+
   map: __esri.Map;
   mapView: __esri.MapView;
   testInfo: string;
@@ -29,11 +30,10 @@ export class EsriMapComponent implements OnInit {
 
   constructor(private mapService: EsriMapService, private moduleProvider: EsriModuleProvider) {
     this.testInfo = 'No Info yet';
-    console.log('constructor esri-ap-cop');
   }
 
   ngOnInit() {
-   }
+  }
 
   getLayerCount(map: __esri.Map): Number {
     return map.allLayers.length;
@@ -60,23 +60,20 @@ export class EsriMapComponent implements OnInit {
       });
 
 
-      this.moduleProvider.require(['esri/widgets/Search'])
+    this.moduleProvider.require(['esri/widgets/Search'])
       .then(([Search]: [__esri.SearchConstructor]) => {
-            const props = [{
-              locator: { url: 'https://services.arcgisonline.nl/arcgis/rest/services/Geocoder_BAG_RD/GeocodeServer' },
-              singleLineFieldName: 'SingleLine',
-              outFields: ['Adres', 'Postcode'],
-              name: 'test',
-              placeholder: 'test placeholder',
-    }];
-    this.ComposeSearch(Search, props);
-
+          const props = [{
+            locator: { url: 'https://services.arcgisonline.nl/arcgis/rest/services/Geocoder_BAG_RD/GeocodeServer' },
+            singleLineFieldName: 'SingleLine',
+            outFields: ['Adres', 'Postcode'],
+            name: 'test',
+            placeholder: 'test placeholder',
+          }];
+          this.ComposeSearch(Search, props);
       });
-
    }
 
   private ComposeSearch(Search: __esri.SearchConstructor, prop: Array<any>) {
-
     const search = new Search( {
         view: this.mapView,
         sources: prop
