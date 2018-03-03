@@ -4,7 +4,6 @@ import { promise } from 'selenium-webdriver';
 import { EsriMapService } from 'angularx-esri-components/src/lib/core';
 import { EsriModuleProvider } from 'angularx-esri-components/src/lib/core';
 
-
 @Component({
   selector: 'app-esri-map',
   templateUrl: './esri-map.component.html',
