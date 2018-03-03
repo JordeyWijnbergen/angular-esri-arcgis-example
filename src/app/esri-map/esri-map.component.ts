@@ -16,7 +16,6 @@ export class EsriMapComponent implements OnInit {
     portalItem: {
       id: 'ad5759bf407c4554b748356ebe1886e5'
     }
-
   };
 
   mapViewProperties: __esri.MapViewProperties = {
@@ -33,21 +32,6 @@ export class EsriMapComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  getLayerCount(map: __esri.Map): Number {
-    return map.allLayers.length;
-  }
-
-  loadMapLayerCount(watchUtils: __esri.watchUtils) {
-    const orig = this;
-    watchUtils.whenOnce(this.map, 'allLayers.length', function(newValue, oldValue, property, object) {
-    console.log('New value: ', newValue,      // The new value of the property
-                '<br>Old value: ', oldValue,  // The previous value of the changed property
-                '<br>Watched property: ', property,  // In this example this value will always be "basemap.title"
-                '<br>Watched object: ', object);     // In this example this value will always be the map object
-                orig.testInfo = String(orig.getLayerCount(orig.map));
-              });
   }
 
   onMapInit(mapInfo: {map: __esri.Map, mapView: __esri.MapView}) {
@@ -71,7 +55,22 @@ export class EsriMapComponent implements OnInit {
           }];
           this.ComposeSearch(Search, props);
       });
-   }
+  }
+
+  loadMapLayerCount(watchUtils: __esri.watchUtils) {
+    const orig = this;
+    watchUtils.whenOnce(this.map, 'allLayers.length', function(newValue, oldValue, property, object) {
+    console.log('New value: ', newValue,      // The new value of the property
+                '<br>Old value: ', oldValue,  // The previous value of the changed property
+                '<br>Watched property: ', property,  // In this example this value will always be "basemap.title"
+                '<br>Watched object: ', object);     // In this example this value will always be the map object
+                orig.testInfo = String(orig.getLayerCount(orig.map));
+              });
+  }
+
+  getLayerCount(map: __esri.Map): Number {
+    return map.allLayers.length;
+  }
 
   private ComposeSearch(Search: __esri.SearchConstructor, prop: Array<any>) {
     const search = new Search( {
